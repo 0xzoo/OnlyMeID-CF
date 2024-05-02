@@ -73,8 +73,14 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
   const screenText = !hasOnlyMeID
     ? 'Get your OnlyMeID to get started'
     : !isRegistered
-      ? 'Register to start earning $DEGEN, plus get a starter bonus'
+      ? 'Register to start earning $DEGEN plus get a starter bonus'
       : 'Claim now'
+
+  const adjustedMarginTop = !hasOnlyMeID
+    ? '-30%'
+    : !isRegistered
+      ? '-32%'
+      : '-30%'
 
   // intents
   let intents: JSX.Element[] = []
@@ -108,12 +114,14 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            marginTop: '-30%'
+            marginTop: adjustedMarginTop
           }}
         >
           <text
             style={{
-              fontSize: '60px'
+              fontSize: '60px',
+              width: '90%',
+              textAlign: 'center'
             }}
           >{screenText}</text>
           {isRegistered &&

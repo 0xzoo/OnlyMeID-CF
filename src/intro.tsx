@@ -29,12 +29,13 @@ export const introScreen: FrameHandler = async (c: FrameContext) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            marginTop: '-30%'
+            marginTop: '-33%'
           }}
         >
           <text
             style={{
               fontSize: '60px',
+              marginBottom: '10px'
             }}
           >
             FREE $DEGEN for humans only

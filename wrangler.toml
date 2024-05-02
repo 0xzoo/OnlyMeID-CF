@@ -1,4 +1,4 @@
-name = "only-me-id-frame"
+name = "demos"
 compatibility_date = "2023-12-01"
 compatibility_flags = ["nodejs_compat"]
 

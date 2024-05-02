@@ -46,7 +46,7 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              marginTop: '-30%'
+              marginTop: '-33%'
             }}
           >
             <text
@@ -79,7 +79,7 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
     })
   }
 
-  const shareUrl = `https://warpcast.com/~/compose?text=I%20just%20claimed%20free%20%24DEGEN%20for%20being%20human&embeds[]=https://only-me-id-frame.crypt0z00.workers.dev`
+  const shareUrl = `https://warpcast.com/~/compose?text=I%20just%20claimed%20free%20%24DEGEN%20for%20being%20human%20from%20@Demosg&embeds[]=https://demos.z00.workers.dev`
   const txUrl = `https://basescan.org/tx/${transactionId}`
   return c.res({
     image: (
@@ -87,13 +87,13 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
           alignItems: 'center',
           width: '100%',
           height: '100%',
           backgroundImage: 'url(https://github.com/0xzoo/OnlyMeID/raw/main/public/nero.jpg)',
           backgroundSize: '100% 100%',
-          color: '#FFFFFF'
+          color: '#FFFFFF',
+          textAlign: 'center'
         }}
       >
         <img
@@ -106,19 +106,22 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            marginTop: '-30%'
+            marginTop: '-33%'
           }}
         >
           <h1
             style={{
-              fontSize: '60px'
+              fontSize: '60px',
+              width: '90%'
             }}
           >
             Come back every day to maximize your claim!
           </h1>
           <text
             style={{
-              fontSize: '45px'
+              fontSize: '30px',
+              wordBreak: 'break-word',
+              marginTop: '20px'
             }}
           >Tx: {transactionId}</text>
         </div>
