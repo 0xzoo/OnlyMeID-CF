@@ -52,7 +52,7 @@ app.transaction('/register', (c) => {
     abi,
     chainId: 'eip155:8453',
     functionName: 'register',
-    args: [`0x${walletAddress}`],
+    args: [walletAddress],
     to: onlyMeIDAddress
   })
 })
@@ -65,7 +65,7 @@ app.transaction('/claim', (c) => {
     abi,
     chainId: 'eip155:8453',
     functionName: 'claim',
-    args: [`0x${walletAddress}`],
+    args: [walletAddress],
     to: onlyMeIDAddress
   })
 })
