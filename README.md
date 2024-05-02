@@ -1,2 +1,6 @@
-# OnlyMeID-CF
-cloudflare implementation of OnlyMeID frame
+```
+npm install
+npm run dev
+```
+
+Head to http://localhost:5173
