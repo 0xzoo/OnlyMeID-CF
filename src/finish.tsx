@@ -16,7 +16,7 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
   if (!isRegistered) {
     const claimEstimate = await publicClient.readContract({
       address: onlyMeIDAddress,
-      args: [`0x${walletAddress.slice(2)}`],
+      args: [`0x${walletAddress}`],
       abi: abi,
       functionName: 'claimEstimate',
     })
@@ -59,7 +59,14 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
                 fontSize: '45px'
               }}
             >
-              Your estimated claim amount: {claimEstimate} $DEGEN
+              Your estimated claim amount:
+            </text>
+            <text
+              style={{
+                fontSize: '45px'
+              }}
+            >
+              {claimEstimate} $DEGEN
             </text>
           </div>
         </div>

@@ -5,9 +5,10 @@ import {
 } from 'frog'
 import { checkIfHasOnlyMeID, getProfileDataFromFid } from './airstack/queries'
 import { errorScreen } from './components/error'
-import { State, contractAddress, onlyMeIDAddress } from './lib/types'
+import { State, contractAddress } from './lib/types'
 import { publicClient } from './lib/client'
 import { abi } from './lib/abi'
+import { formatEther } from 'viem'
 
 // const maxUsers = 9999
 // let totalUsers: number
@@ -72,7 +73,7 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
   const screenText = !hasOnlyMeID
     ? 'Get your OnlyMeID to get started'
     : !isRegistered
-      ? 'Register below to enable your claim'
+      ? 'Register to enable your claim'
       : 'Claim now'
 
   // intents
@@ -122,7 +123,7 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
                   fontSize: '45px'
                 }}
               >
-                Your estimated claim amount: {claimEstimate} $DEGEN
+                Your estimated claim amount: {formatEther(claimEstimate)} $DEGEN
               </text>
             )
           }
