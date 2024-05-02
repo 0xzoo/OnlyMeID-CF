@@ -9,7 +9,7 @@ import { abi } from './lib/abi.js'
 import { AIRSTACK_API_KEY } from './airstack/key.js'
 import {
   State,
-  onlyMeIDAddress
+  contractAddress,
 } from './lib/types.js'
 
 
@@ -53,7 +53,7 @@ app.transaction('/register', (c) => {
     chainId: 'eip155:8453',
     functionName: 'register',
     args: [walletAddress],
-    to: onlyMeIDAddress
+    to: contractAddress
   })
 })
 
@@ -66,7 +66,7 @@ app.transaction('/claim', (c) => {
     chainId: 'eip155:8453',
     functionName: 'claim',
     args: [walletAddress],
-    to: onlyMeIDAddress
+    to: contractAddress
   })
 })
 
