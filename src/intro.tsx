@@ -24,12 +24,29 @@ export const introScreen: FrameHandler = async (c: FrameContext) => {
           width='1200px'
           src='https://github.com/0xzoo/OnlyMeID/raw/main/public/nero.jpg'
         />
-        <text
+        <div
           style={{
-            fontSize: '60px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             marginTop: '-30%'
           }}
-        >Claim your OnlyMeID rewards</text>
+        >
+          <text
+            style={{
+              fontSize: '60px',
+            }}
+          >
+            FREE $DEGEN for humans only
+          </text>
+          <text
+            style={{
+              fontSize: '45px',
+            }}
+          >
+            Get your OnlyMeID to get started
+          </text>
+        </div>
       </div>
     ),
     intents: [

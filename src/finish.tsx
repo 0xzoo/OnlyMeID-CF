@@ -6,6 +6,7 @@ import {
 import { publicClient } from './lib/client'
 import { State, onlyMeIDAddress } from './lib/types'
 import { abi } from './lib/abi'
+import { formatEther } from 'viem'
 
 
 export const finishScreen: FrameHandler = async (c: FrameContext) => {
@@ -29,6 +30,7 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            justifyContent: 'center',
             width: '100%',
             height: '100%',
             color: '#FFFFFF'
@@ -66,7 +68,7 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
                 fontSize: '45px'
               }}
             >
-              {claimEstimate} $DEGEN
+              {formatEther(claimEstimate)} $DEGEN
             </text>
           </div>
         </div>
@@ -77,7 +79,7 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
     })
   }
 
-  const shareUrl = `https://warpcast.com/~/compose?text=I%20just%20claimed%20my%20OnlyMeID%20rewards&embeds[]=https://only-me-id-frame.crypt0z00.workers.dev`
+  const shareUrl = `https://warpcast.com/~/compose?text=I%20just%20claimed%20free%20%24DEGEN%20for%20being%20human&embeds[]=https://only-me-id-frame.crypt0z00.workers.dev`
   const txUrl = `https://basescan.org/tx/${transactionId}`
   return c.res({
     image: (
@@ -111,7 +113,9 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
             style={{
               fontSize: '60px'
             }}
-          >You claimed!</h1>
+          >
+            Come back every day to maximize your claim!
+          </h1>
           <text
             style={{
               fontSize: '45px'

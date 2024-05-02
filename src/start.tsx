@@ -46,7 +46,7 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
   } else if (!hasOnlyMeID) {
     return c.res({
       image: (errorScreen('No OnlyMeID found in your connected wallet.')),
-      intents: [<Button.Link href='https://app.demos.global'>Mint an OnlyMeID</Button.Link>]
+      intents: [<Button.Link href='https://app.demos.global'>Mint your OnlyMeID</Button.Link>]
     })
   }
 
@@ -73,7 +73,7 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
   const screenText = !hasOnlyMeID
     ? 'Get your OnlyMeID to get started'
     : !isRegistered
-      ? 'Register to enable your claim'
+      ? 'Register to start earning $DEGEN, plus get a starter bonus'
       : 'Claim now'
 
   // intents
@@ -118,13 +118,28 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
           >{screenText}</text>
           {isRegistered &&
             (
-              <text
+              <div
                 style={{
-                  fontSize: '45px'
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
                 }}
               >
-                Your estimated claim amount: {formatEther(claimEstimate)} $DEGEN
-              </text>
+                <text
+                  style={{
+                    fontSize: '45px'
+                  }}
+                >
+                  Your estimated claim amount:
+                </text>
+                <text
+                  style={{
+                    fontSize: '45px'
+                  }}
+                >
+                  {formatEther(claimEstimate)} $DEGEN
+                </text>
+              </div>
             )
           }
         </div>
