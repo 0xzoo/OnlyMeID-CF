@@ -5,7 +5,7 @@ import {
 } from 'frog'
 import { checkIfHasOnlyMeID, getProfileDataFromFid } from './airstack/queries'
 import { errorScreen } from './components/error'
-import { State, onlyMeIDAddress } from './lib/types'
+import { State, contractAddress, onlyMeIDAddress } from './lib/types'
 import { publicClient } from './lib/client'
 import { abi } from './lib/abi'
 
@@ -30,11 +30,7 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
   const { wallets } = profileData
   // only checking primary wallet
   let primaryWallet = wallets[0]
-  let walletAddress = primaryWallet.address as `0x${string}`
-  deriveState(previousState => {
-    let newState = previousState as State
-    newState.walletAddress = primaryWallet.address as `0x${string}`
-  })
+  let walletAddress = `0x${primaryWallet.address.slice(2)}` as `0x${string}`
 
   // if primary wallet isnt on eth?
   // if (primaryWallet.blockchain !== 'Ethereum') {
@@ -54,7 +50,7 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
   }
 
   const isRegistered = await publicClient.readContract({
-    address: onlyMeIDAddress,
+    address: contractAddress,
     args: [walletAddress],
     abi: abi,
     functionName: 'isRegistered',
@@ -62,12 +58,12 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
 
   deriveState(previousState => {
     let newState = previousState as State
-    newState.walletAddress = primaryWallet.address as `0x${string}`
+    newState.walletAddress = `0x${primaryWallet.address.slice(2)}`
     newState.isRegistered = isRegistered
   })
 
   const claimEstimate = await publicClient.readContract({
-    address: onlyMeIDAddress,
+    address: contractAddress,
     args: [walletAddress],
     abi: abi,
     functionName: 'claimEstimate',

@@ -16,7 +16,7 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
   if (!isRegistered) {
     const claimEstimate = await publicClient.readContract({
       address: onlyMeIDAddress,
-      args: [walletAddress],
+      args: [`0x${walletAddress.slice(2)}`],
       abi: abi,
       functionName: 'claimEstimate',
     })
