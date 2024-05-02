@@ -79,7 +79,7 @@ export const finishScreen: FrameHandler = async (c: FrameContext) => {
     })
   }
 
-  const shareUrl = `https://warpcast.com/~/compose?text=I%20just%20claimed%20free%20%24DEGEN%20for%20being%20human%20from%20@Demosg&embeds[]=https://demos.z00.workers.dev`
+  const shareUrl = `https://warpcast.com/~/compose?text=I%20just%20claimed%20free%20%24DEGEN%20for%20being%20human%20from%20@demosg&embeds[]=https://demos.z00.workers.dev`
   const txUrl = `https://basescan.org/tx/${transactionId}`
   return c.res({
     image: (
