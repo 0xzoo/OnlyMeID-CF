@@ -52,7 +52,7 @@ export const introScreen: FrameHandler = async (c: FrameContext) => {
     ),
     intents: [
       <Button action='/start'>Verify</Button>,
-      <Button.Link href='https://app.demos.global'>Mint an OnlyMeID</Button.Link>
+      <Button.Link href='https://app.demos.global/base'>Mint an OnlyMeID</Button.Link>
     ]
   })
 }

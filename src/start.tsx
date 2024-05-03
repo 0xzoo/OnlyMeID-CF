@@ -30,6 +30,14 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
 
   const { wallets } = profileData
   // only checking primary wallet
+  if (!wallets || wallets.length == 0) {
+    return c.res({
+      image: errorScreen('You need a connected wallet to continue'),
+      intents: [
+        <Button.Reset>Back</Button.Reset>
+      ]
+    })
+  }
   let primaryWallet = wallets[0]
   let walletAddress = `0x${primaryWallet.address.slice(2)}` as `0x${string}`
 

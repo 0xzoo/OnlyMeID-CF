@@ -9,6 +9,7 @@ export function errorScreen(error: string) {
         alignItems: 'center',
         width: '100%',
         height: '100%',
+        color: '#FFFFFF'
       }}
     >
       <img
@@ -19,7 +20,9 @@ export function errorScreen(error: string) {
       <text
         style={{
           fontSize: '60px',
-          marginTop: '-30%'
+          marginTop: '-30%',
+          width: '90%',
+          textAlign: 'center'
         }}
       >
         {error}
