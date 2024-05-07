@@ -55,7 +55,7 @@ export async function getProfileDataFromFid(fid: number): Promise<ProfileDataRes
 export async function checkIfHasOnlyMeID(wallet: string) {
   const query = `
     query MyQuery($walletAddress: Identity!, $onlyMeIDAddress: Address!) {
-      Ethereum: TokenBalances(
+      TokenBalances(
         input: {filter: {owner: {_eq: $walletAddress}, tokenAddress: {_eq: $onlyMeIDAddress}}, blockchain: base, limit: 1}
       ) {
         TokenBalance {
@@ -67,7 +67,11 @@ export async function checkIfHasOnlyMeID(wallet: string) {
   `
 
   const { data, error } = await fetchQuery(query, { walletAddress: wallet, onlyMeIDAddress: onlyMeIDAddress })
-  if (error) console.log('onlyMeID check error', error)
-  const hasOnlyMeID = Number(data.Ethereum.TokenBalance[0].amount)
+  console.log('data', data)
+  if (error) {
+    console.log('onlyMeID check error', error)
+  }
+  const tokenBalance = data.TokenBalances.TokenBalance
+  const hasOnlyMeID = tokenBalance ? Number(data.Ethereum.TokenBalance[0].amount) : 0
   return { hasOnlyMeID, error }
 }

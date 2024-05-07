@@ -47,6 +47,7 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
   // }
   const { hasOnlyMeID, error: hasOMIDError } = await checkIfHasOnlyMeID(primaryWallet.address)
   if (hasOMIDError) {
+    console.log('hasOMIDError', hasOMIDError)
     return c.res({
       image: (errorScreen(hasOMIDError.message)),
       intents: [<Button.Transaction target='/claim'>Retry</Button.Transaction>]
