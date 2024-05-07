@@ -60,7 +60,6 @@ export async function checkIfHasOnlyMeID(wallet: string) {
       ) {
         TokenBalance {
           amount
-          tokenId
         }
       }
     }
@@ -72,6 +71,6 @@ export async function checkIfHasOnlyMeID(wallet: string) {
     console.log('onlyMeID check error', error)
   }
   const tokenBalance = data.TokenBalances.TokenBalance
-  const hasOnlyMeID = tokenBalance ? Number(data.Ethereum.TokenBalance[0].amount) : 0
+  const hasOnlyMeID = tokenBalance ? Number(tokenBalance[0].amount) : 0
   return { hasOnlyMeID, error }
 }

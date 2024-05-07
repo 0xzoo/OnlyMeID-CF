@@ -42,7 +42,7 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
   let walletAddress = `0x${primaryWallet.address.slice(2)}` as `0x${string}`
 
   // if primary wallet isnt on eth?
-  // if (primaryWallet.blockchain !== 'Ethereum') {
+  // if (primaryWallet.blockchain !== 'ethereum') {
 
   // }
   const { hasOnlyMeID, error: hasOMIDError } = await checkIfHasOnlyMeID(primaryWallet.address)
