@@ -3,26 +3,13 @@ import {
   fetchQuery
 } from "@airstack/airstack-react"
 import { AIRSTACK_API_KEY } from "./key.js"
-import { onlyMeIDAddress } from "../lib/types.js"
+import {
+  CIHOMIDResponse,
+  ProfileDataResponse,
+  onlyMeIDAddress
+} from "../lib/types.js"
 
 init(AIRSTACK_API_KEY)
-
-type Wallet = {
-  address: string,
-  blockchain: string
-}
-
-type ProfileData = {
-  profileName: string,
-  image: string,
-  wallets: Wallet[]
-}
-
-type ProfileDataResponse = {
-  profileData: ProfileData,
-  error: Error
-}
-
 
 export async function getProfileDataFromFid(fid: number): Promise<ProfileDataResponse> {
   const query = `
@@ -52,7 +39,7 @@ export async function getProfileDataFromFid(fid: number): Promise<ProfileDataRes
   return { profileData, error }
 }
 
-export async function checkIfHasOnlyMeID(wallet: string) {
+export async function checkIfHasOnlyMeID(wallet: string): Promise<CIHOMIDResponse> {
   const query = `
     query MyQuery($walletAddress: Identity!, $onlyMeIDAddress: Address!) {
       TokenBalances(
@@ -66,10 +53,6 @@ export async function checkIfHasOnlyMeID(wallet: string) {
   `
 
   const { data, error } = await fetchQuery(query, { walletAddress: wallet, onlyMeIDAddress: onlyMeIDAddress })
-  console.log('data', data)
-  if (error) {
-    console.log('onlyMeID check error', error)
-  }
   const tokenBalance = data.TokenBalances.TokenBalance
   const hasOnlyMeID = tokenBalance ? Number(tokenBalance[0].amount) : 0
   return { hasOnlyMeID, error }

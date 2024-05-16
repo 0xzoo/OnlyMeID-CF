@@ -3,6 +3,7 @@ import {
   FrameContext,
   FrameHandler,
 } from 'frog'
+import { onlyMeIdUrl } from './lib/types'
 
 
 export const introScreen: FrameHandler = async (c: FrameContext) => {
@@ -52,7 +53,7 @@ export const introScreen: FrameHandler = async (c: FrameContext) => {
     ),
     intents: [
       <Button action='/start'>Verify</Button>,
-      <Button.Link href='https://app.demos.global/base'>Mint an OnlyMeID</Button.Link>
+      <Button.Link href={onlyMeIdUrl}>Mint an OnlyMeID</Button.Link>
     ]
   })
 }

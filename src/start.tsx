@@ -3,9 +3,16 @@ import {
   FrameContext,
   Button
 } from 'frog'
-import { checkIfHasOnlyMeID, getProfileDataFromFid } from './airstack/queries'
+import {
+  checkIfHasOnlyMeID,
+  getProfileDataFromFid
+} from './airstack/queries'
 import { errorScreen } from './components/error'
-import { State, contractAddress } from './lib/types'
+import {
+  State,
+  contractAddress,
+  onlyMeIdUrl
+} from './lib/types'
 import { publicClient } from './lib/client'
 import { abi } from './lib/abi'
 import { formatEther } from 'viem'
@@ -55,7 +62,7 @@ export const startScreen: FrameHandler = async (c: FrameContext) => {
   } else if (!hasOnlyMeID) {
     return c.res({
       image: (errorScreen('No OnlyMeID found in your connected wallet.')),
-      intents: [<Button.Link href='https://app.demos.global'>Mint your OnlyMeID</Button.Link>]
+      intents: [<Button.Link href={onlyMeIdUrl}>Mint your OnlyMeID</Button.Link>]
     })
   }
 
